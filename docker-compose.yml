@@ -1,0 +1,38 @@
+services:
+  falkordb:
+    image: falkordb/falkordb:latest
+    ports:
+      - "6379:6379"   # FalkorDB (Redis protocol)
+      - "3000:3000"   # FalkorDB Browser UI
+    volumes:
+      - falkordb-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "-p", "6379", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      FALKOR_HOST: falkordb
+      FALKOR_PORT: 6379
+      AUTO_SEED: "true"
+    depends_on:
+      falkordb:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      - "3001:3001"
+    depends_on:
+      - backend
+
+volumes:
+  falkordb-data:
