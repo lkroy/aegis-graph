@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1150" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">
+<rect width="1600" height="1150" fill="#0b0e14"/>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8b98ab"/></marker>
+<marker id="arc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#22d3ee"/></marker>
+<marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f87171"/></marker>
+</defs>
+<text x="800" y="62" text-anchor="middle" font-size="40" font-weight="bold" fill="#e6edf3" font-family="system-ui">AegisGraph — System Architecture</text>
+<text x="800" y="96" text-anchor="middle" font-size="19" fill="#22d3ee" font-family="system-ui">Autonomous SRE agent · FalkorDB as the central context layer</text>
+<text x="70" y="150" font-size="19" font-weight="bold" fill="#f5b50a" font-family="system-ui">LIVE DEPLOYMENT (AWS ap-southeast-2)</text>
+<g font-size="15" fill="#9aa7b8" text-anchor="middle">
+<rect x="45" y="175" width="330" height="215" rx="16" fill="#11161f" stroke="#e6edf3" stroke-width="2.5"/>
+<text x="210" y="225" font-size="20" font-weight="bold" fill="#e6edf3" font-family="system-ui">Judge / User</text>
+<text x="210" y="270">browser</text><text x="210" y="305">clicks chaos scenario,</text><text x="210" y="335">watches agent stream</text>
+<rect x="405" y="175" width="430" height="215" rx="16" fill="#11161f" stroke="#f5b50a" stroke-width="2.5"/>
+<text x="620" y="225" font-size="20" font-weight="bold" fill="#f5b50a" font-family="system-ui">CloudFront (HTTPS)</text>
+<text x="620" y="265">d2flec0t39io78.cloudfront.net</text><text x="620" y="305">/ → S3 (dashboard)</text><text x="620" y="340">/api/*, /ws/* → EC2:8000</text>
+<rect x="865" y="175" width="270" height="215" rx="16" fill="#11161f" stroke="#34d399" stroke-width="2.5"/>
+<text x="1000" y="225" font-size="20" font-weight="bold" fill="#34d399" font-family="system-ui">S3 Bucket</text>
+<text x="1000" y="275">aegis-graph-demo-*</text><text x="1000" y="315">Next.js static export</text>
+<rect x="1165" y="175" width="390" height="330" rx="16" fill="#0d1219" stroke="#22d3ee" stroke-width="2.5"/>
+<text x="1360" y="225" font-size="20" font-weight="bold" fill="#22d3ee" font-family="system-ui">EC2 t3.micro</text>
+<text x="1360" y="255">Docker · ap-southeast-2</text>
+<rect x="1185" y="275" width="350" height="105" rx="12" fill="#11161f" stroke="#f87171" stroke-width="2"/>
+<text x="1360" y="308" font-size="17" font-weight="bold" fill="#f87171" font-family="system-ui">FalkorDB :6379</text>
+<text x="1360" y="338">prod_graph 43n / 66e</text>
+<rect x="1185" y="392" width="350" height="95" rx="12" fill="#11161f" stroke="#22d3ee" stroke-width="2"/>
+<text x="1360" y="425" font-size="17" font-weight="bold" fill="#22d3ee" font-family="system-ui">Backend :8000</text>
+<text x="1360" y="455">FastAPI · WS · MCP :8001</text>
+<text x="1360" y="368" font-size="13" fill="#f87171" font-style="italic">Cypher</text>
+</g>
+<g stroke-width="2.5" fill="none">
+<line x1="375" y1="282" x2="400" y2="282" stroke="#8b98ab" marker-end="url(#ar)"/>
+<text x="388" y="268" font-size="13" fill="#9aa7b8" font-style="italic" text-anchor="middle">HTTPS</text>
+<line x1="835" y1="260" x2="860" y2="260" stroke="#8b98ab" marker-end="url(#ar)"/>
+<text x="850" y="290" font-size="13" fill="#9aa7b8" font-style="italic" text-anchor="middle">/</text>
+<line x1="835" y1="340" x2="1180" y2="410" stroke="#8b98ab" marker-end="url(#ar)"/>
+<text x="1010" y="392" font-size="13" fill="#9aa7b8" font-style="italic" text-anchor="middle">/api/*, /ws/*</text>
+</g>
+<text x="70" y="585" font-size="19" font-weight="bold" fill="#f5b50a" font-family="system-ui">AGENT REASONING LOOP (every step is a real Cypher query via MCP)</text>
+<g font-size="14" fill="#9aa7b8" text-anchor="middle">
+<rect x="45" y="620" width="195" height="290" rx="14" fill="#11161f" stroke="#f87171" stroke-width="2.5"/>
+<text x="142" y="672" font-size="22" font-weight="bold" fill="#f87171" font-family="system-ui">1</text>
+<text x="142" y="702" font-size="22" font-weight="bold" fill="#f87171" font-family="system-ui">CHAOS</text>
+<text x="142" y="800">inject scenario</text>
+<rect x="255" y="620" width="195" height="290" rx="14" fill="#11161f" stroke="#a78bfa" stroke-width="2.5"/>
+<text x="352" y="672" font-size="22" font-weight="bold" fill="#a78bfa" font-family="system-ui">2</text>
+<text x="352" y="702" font-size="22" font-weight="bold" fill="#a78bfa" font-family="system-ui">MEMORY</text>
+<text x="352" y="800">recall_similar_</text><text x="352" y="822">incidents</text>
+<rect x="465" y="620" width="195" height="290" rx="14" fill="#11161f" stroke="#22d3ee" stroke-width="2.5"/>
+<text x="562" y="672" font-size="22" font-weight="bold" fill="#22d3ee" font-family="system-ui">3</text>
+<text x="562" y="702" font-size="22" font-weight="bold" fill="#22d3ee" font-family="system-ui">DIAGNOSE</text>
+<text x="562" y="800">PageRank root</text><text x="562" y="822">cause + proof path</text>
+<rect x="675" y="620" width="195" height="290" rx="14" fill="#11161f" stroke="#f5b50a" stroke-width="2.5"/>
+<text x="772" y="672" font-size="22" font-weight="bold" fill="#f5b50a" font-family="system-ui">4</text>
+<text x="772" y="702" font-size="22" font-weight="bold" fill="#f5b50a" font-family="system-ui">BLAST</text>
+<text x="772" y="800">compute_blast_</text><text x="772" y="822">radius ($7.5k/min)</text>
+<rect x="885" y="620" width="195" height="290" rx="14" fill="#11161f" stroke="#f472b6" stroke-width="2.5"/>
+<text x="982" y="672" font-size="22" font-weight="bold" fill="#f472b6" font-family="system-ui">5</text>
+<text x="982" y="702" font-size="22" font-weight="bold" fill="#f472b6" font-family="system-ui">SHADOW DUEL</text>
+<text x="982" y="800">naive: REJECTED</text><text x="982" y="822">surgical: APPROVED</text>
+<rect x="1095" y="620" width="195" height="290" rx="14" fill="#11161f" stroke="#34d399" stroke-width="2.5"/>
+<text x="1192" y="672" font-size="22" font-weight="bold" fill="#34d399" font-family="system-ui">6</text>
+<text x="1192" y="702" font-size="22" font-weight="bold" fill="#34d399" font-family="system-ui">EXECUTE</text>
+<text x="1192" y="800">approved fix</text><text x="1192" y="822">on prod_graph</text>
+<rect x="1305" y="620" width="195" height="290" rx="14" fill="#11161f" stroke="#e6edf3" stroke-width="2.5"/>
+<text x="1402" y="672" font-size="22" font-weight="bold" fill="#e6edf3" font-family="system-ui">7</text>
+<text x="1402" y="702" font-size="22" font-weight="bold" fill="#e6edf3" font-family="system-ui">REMEMBER</text>
+<text x="1402" y="800">:IncidentEpisode</text><text x="1402" y="822">notify @Owner</text>
+</g>
+<g stroke-width="2.5">
+<line x1="240" y1="765" x2="252" y2="765" stroke="#f87171" marker-end="url(#arr)"/>
+<line x1="450" y1="765" x2="462" y2="765" stroke="#a78bfa" marker-end="url(#ar)"/>
+<line x1="660" y1="765" x2="672" y2="765" stroke="#22d3ee" marker-end="url(#arc)"/>
+<line x1="870" y1="765" x2="882" y2="765" stroke="#f5b50a" marker-end="url(#ar)"/>
+<line x1="1080" y1="765" x2="1092" y2="765" stroke="#f472b6" marker-end="url(#ar)"/>
+<line x1="1290" y1="765" x2="1302" y2="765" stroke="#34d399" marker-end="url(#ar)"/>
+</g>
+<text x="800" y="985" text-anchor="middle" font-size="16" fill="#9aa7b8">Track 01: agents act on connected data · Track 02: episodic memory + shadow-graph coordination · Track 03: Company Brain (owners, commits, runbooks)</text>
+<text x="800" y="1025" text-anchor="middle" font-size="15" fill="#5b6779">github.com/lkroy/aegis-graph · MIT</text>
+<text x="800" y="1070" text-anchor="middle" font-size="14" fill="#5b6779">docker compose up → dashboard :3001 · api :8000 · FalkorDB browser :3000</text>
+<text x="800" y="1105" text-anchor="middle" font-size="14" fill="#5b6779">WeMakeDevs × FalkorDB "Graph Hacks" · submissions close Oct 18, 11:59 PM IST</text>
+</svg>
