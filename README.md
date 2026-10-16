@@ -55,7 +55,7 @@ Shadow graphs `sim_rejected` / `sim_approved` are FalkorDB multigraph clones of 
 
 ## Architecture
 
-![AegisGraph system architecture](docs/architecture.png)
+![AegisGraph system architecture](docs/architecture.svg)
 
 ```
 ┌─────────────┐      ┌──────────────────┐      ┌─────────────────┐
