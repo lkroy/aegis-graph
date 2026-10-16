@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #020617;
+  overflow: hidden;
+}
+
+/* Slim scrollbars for panels */
+.slim-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.slim-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.slim-scroll::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+.slim-scroll::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+@keyframes pulse-red {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+.animate-pulse-red {
+  animation: pulse-red 1.2s ease-in-out infinite;
+}
+
+@keyframes glow-border {
+  0%,
+  100% {
+    box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(34, 211, 238, 0.65);
+  }
+}
+.animate-glow {
+  animation: glow-border 2s ease-in-out infinite;
+}
